@@ -11,9 +11,7 @@ class StudentController extends Controller
     // 一覧表示
     public function index() {
         $students = Student::all();
-        return response()->json([
-            'data' => $students
-        ], 200);
+        return response()->json($students, 200);
     }
 
     // 登録
