@@ -5,6 +5,18 @@ services:
     volumes:
       - ./src:/data
 
+  front:
+    build:
+      context: .
+      dockerfile: ./front/Dockerfile
+    volumes:
+      - ./front/src:/app
+    environment:
+      - WATCHPACK_POLLING=true
+    command: "npm run dev"
+    ports:
+      - 3000:3000
+
   web:
     image: nginx:1.20-alpine
     ports:
